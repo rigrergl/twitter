@@ -17,8 +17,7 @@
 
 @implementation TimelineViewController
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
     
     // Get timeline
@@ -35,14 +34,12 @@
     }];
 }
 
-- (void)didReceiveMemoryWarning
-{
+- (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)logoutButtonClicked:(UIButton *)sender
-{
+- (IBAction)logoutButtonClicked:(UIButton *)sender {
     NSLog(@"Logout called");
     // TimelineViewController.m
     AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
