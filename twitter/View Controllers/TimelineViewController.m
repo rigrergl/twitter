@@ -9,9 +9,12 @@
 #import "TimelineViewController.h"
 #import "APIManager.h"
 #import "AppDelegate.h"
-#import "LoginViewController.h""
+#import "LoginViewController.h"
+#import "Tweet.h"
 
 @interface TimelineViewController ()
+
+@property (nonatomic, strong) NSArray * arrayOfTweets;
 
 @end
 
@@ -23,6 +26,7 @@
     // Get timeline
     [[APIManager shared] getHomeTimelineWithCompletion:^(NSArray *tweets, NSError *error) {
         if (tweets) {
+            self.arrayOfTweets = tweets;
             NSLog(@"😎😎😎 Successfully loaded home timeline");
             for (NSDictionary *dictionary in tweets) {
                 NSString *text = dictionary[@"text"];
