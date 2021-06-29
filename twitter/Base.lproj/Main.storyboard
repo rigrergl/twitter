@@ -272,7 +272,7 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="6/9/21" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1jw-Dj-iu8">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="752" text="6/9/21" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1jw-Dj-iu8">
                                                     <rect key="frame" x="297" y="15" width="38" height="17"/>
                                                     <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="14"/>
                                                     <nil key="textColor"/>
@@ -392,8 +392,8 @@
                     <navigationItem key="navigationItem" id="GHP-Tc-L0X"/>
                     <connections>
                         <outlet property="memoLabel" destination="eGh-As-sZk" id="tDf-hu-UkC"/>
-                        <outlet property="profileImageView" destination="5n8-No-Z8l" id="WRF-Ei-tPq"/>
                         <outlet property="profileNameLabel" destination="381-Wo-TzZ" id="OP9-ho-pKE"/>
+                        <outlet property="profilePicture" destination="QtV-V6-8Dk" id="TS2-M9-ZZQ"/>
                         <outlet property="tableView" destination="fBi-Tl-MRb" id="tvq-LG-yHf"/>
                     </connections>
                 </viewController>

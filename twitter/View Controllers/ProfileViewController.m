@@ -12,19 +12,26 @@
 #import "Tweet.h"
 
 @interface ProfileViewController () <UITableViewDataSource, UITableViewDelegate>
+
 @property (nonatomic, strong) NSMutableArray * arrayOfTweets;
+@property (nonatomic, strong) UIRefreshControl *refreshControl;
+
 @end
 
 @implementation ProfileViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
     
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
-    
-    // Get timeline
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    [self.refreshControl addTarget:self action:@selector(fetchTweets) forControlEvents:UIControlEventValueChanged];
+    [self.tableView insertSubview:self.refreshControl atIndex:0];
+    [self fetchTweets];
+}
+
+- (void)fetchTweets{
     [[APIManager shared] getUserTimelineWithCompletion:^(NSArray *tweets, NSError *error) {
         if (tweets) {
             self.arrayOfTweets = tweets;
@@ -33,6 +40,7 @@
             NSLog(@"😫😫😫 Error getting home timeline: %@", error.localizedDescription);
         }
         [self.tableView reloadData];
+        [self.refreshControl endRefreshing];
     }];
     
     [[APIManager shared] getUserProfileData:^(NSDictionary *user, NSError *error) {
@@ -48,6 +56,12 @@
     Tweet *tweet = self.arrayOfTweets[indexPath.row];
     
     cell.tableBodyLabel.text = tweet.text;
+    
+    //setting the image
+    NSString *URLString = tweet.user.profilePicture;
+    NSURL *url = [NSURL URLWithString:URLString];
+    NSData *urlData = [NSData dataWithContentsOfURL:url];
+    cell.profilePicture.image = [UIImage imageWithData:urlData];
     
     return cell;
 }
