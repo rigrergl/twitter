@@ -15,6 +15,7 @@
 
 @property (nonatomic, strong) NSMutableArray * arrayOfTweets;
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
+@property (weak, nonatomic) IBOutlet UIImageView *profilePicture;
 
 @end
 
@@ -46,15 +47,18 @@
     [[APIManager shared] getUserProfileData:^(NSDictionary *user, NSError *error) {
         self.profileNameLabel.text = user[@"screen_name"];
         self.memoLabel.text = user[@"description"];
+        
+        //setting up the profile image
+        NSString *URLString = user[@"profile_image_url_https"];
+        NSURL *url = [NSURL URLWithString:URLString];
+        NSData *urlData = [NSData dataWithContentsOfURL:url];
+        self.profilePicture.image = [UIImage imageWithData:urlData];
     }];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
     ProfileTweetCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"ProfileTweetCell"];
-    
     Tweet *tweet = self.arrayOfTweets[indexPath.row];
-    
     cell.tableBodyLabel.text = tweet.text;
     
     //setting the image

@@ -332,7 +332,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="profileImageView" destination="QtV-V6-8Dk" id="jYJ-Ws-MwY"/>
+                                            <outlet property="profilePicture" destination="QtV-V6-8Dk" id="eBh-pD-zxO"/>
                                             <outlet property="screenNameLabel" destination="4GQ-9R-VaE" id="8Rs-vM-2qv"/>
                                             <outlet property="tableBodyLabel" destination="jEo-PV-MRf" id="WME-2L-5wF"/>
                                             <outlet property="tweetAuthorLabel" destination="32c-fc-7JS" id="4W6-6x-bsd"/>
@@ -393,7 +393,7 @@
                     <connections>
                         <outlet property="memoLabel" destination="eGh-As-sZk" id="tDf-hu-UkC"/>
                         <outlet property="profileNameLabel" destination="381-Wo-TzZ" id="OP9-ho-pKE"/>
-                        <outlet property="profilePicture" destination="QtV-V6-8Dk" id="TS2-M9-ZZQ"/>
+                        <outlet property="profilePicture" destination="5n8-No-Z8l" id="uDE-Mp-7eV"/>
                         <outlet property="tableView" destination="fBi-Tl-MRb" id="tvq-LG-yHf"/>
                     </connections>
                 </viewController>

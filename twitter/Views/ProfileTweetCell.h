@@ -11,11 +11,16 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface ProfileTweetCell : UITableViewCell
-@property (weak, nonatomic) IBOutlet UIImageView *profileImageView;
+
+
 @property (weak, nonatomic) IBOutlet UILabel *tweetAuthorLabel;
 @property (weak, nonatomic) IBOutlet UILabel *tweetDateLabel;
 @property (weak, nonatomic) IBOutlet UILabel *screenNameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *tableBodyLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *profilePicture;
+
+
+
 @end
 
 NS_ASSUME_NONNULL_END
