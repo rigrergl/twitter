@@ -33,6 +33,10 @@
     [self.refreshControl addTarget:self action:@selector(fetchTimeline) forControlEvents:UIControlEventValueChanged];
     [self.collectionView insertSubview:self.refreshControl atIndex:0];
     [self fetchTimeline];
+    
+    
+    UICollectionViewFlowLayout *layout = self.collectionView.collectionViewLayout;
+    layout.estimatedItemSize = UICollectionViewFlowLayoutAutomaticSize;
 }
 
 - (void)fetchTimeline {
