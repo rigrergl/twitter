@@ -15,4 +15,8 @@
 
 - (void)getHomeTimelineWithCompletion:(void(^)(NSArray *tweets, NSError *error))completion;
 
+- (void)getUserTimelineWithCompletion:(void(^)(NSArray *tweets, NSError *error))completion;
+
+- (void)getUserProfileData:(void(^)(NSDictionary *user, NSError *error))completion;
+
 @end

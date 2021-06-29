@@ -26,6 +26,7 @@
     self.collectionView.dataSource = self;
     self.collectionView.delegate = self;
     
+    
     // Get timeline
     [[APIManager shared] getHomeTimelineWithCompletion:^(NSArray *tweets, NSError *error) {
         if (tweets) {
@@ -71,14 +72,14 @@
     return self.arrayOfTweets.count;
 }
 
-- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
-{
-    Tweet* tweet = self.arrayOfTweets[indexPath.item];
-    NSInteger textLength = tweet.text.length;
-    
-    CGFloat cellHeight = textLength * 2 + 30;
-    return CGSizeMake(CGRectGetWidth(collectionView.frame), cellHeight);
-}
+//- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    Tweet* tweet = self.arrayOfTweets[indexPath.item];
+//    NSInteger textLength = tweet.text.length;
+//
+//    CGFloat cellHeight = textLength * 2 + 30;
+//    return CGSizeMake(CGRectGetWidth(collectionView.frame), cellHeight);
+//}
 
 
 /*

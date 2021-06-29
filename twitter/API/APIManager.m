@@ -51,12 +51,37 @@ static NSString * const baseURLString = @"https://api.twitter.com";
 }
 
 - (void)getHomeTimelineWithCompletion:(void(^)(NSArray *tweets, NSError *error))completion {
-    
+    NSDictionary *parameters = @{@"tweet_mode":@"extended"};
     [self GET:@"1.1/statuses/home_timeline.json"
-       parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, NSArray *  _Nullable tweetDictionaries) {
+       parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, NSArray *  _Nullable tweetDictionaries) {
            // Success
            NSMutableArray *tweets  = [Tweet tweetsWithArray:tweetDictionaries];
            completion(tweets, nil);
+       } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+           // There was a problem
+           completion(nil, error);
+    }];
+}
+
+- (void)getUserTimelineWithCompletion:(void (^)(NSArray *, NSError *))completion {
+    NSDictionary *parameters = @{@"tweet_mode":@"extended"};
+    [self GET:@"1.1/statuses/user_timeline.json"
+       parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, NSArray *  _Nullable tweetDictionaries) {
+           // Success
+           NSMutableArray *tweets  = [Tweet tweetsWithArray:tweetDictionaries];
+           completion(tweets, nil);
+       } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+           // There was a problem
+           completion(nil, error);
+    }];
+}
+
+- (void)getUserProfileData:(void (^)(NSDictionary *, NSError *))completion {
+    NSDictionary *parameters = @{@"tweet_mode":@"extended"};
+    [self GET:@"1.1/account/verify_credentials.json"
+       parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary *  _Nullable resultDictionary) {
+           // Success
+           completion(resultDictionary, nil);
        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
            // There was a problem
            completion(nil, error);

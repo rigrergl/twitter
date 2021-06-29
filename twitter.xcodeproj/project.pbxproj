@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		3B31CAE1268A898500A22593 /* TweetCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B31CAE0268A898500A22593 /* TweetCell.m */; };
+		3B31CAE6268AC15100A22593 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B31CAE5268AC15100A22593 /* ProfileViewController.m */; };
+		3B31CAE9268AC57A00A22593 /* ProfileTweetCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B31CAE8268AC57A00A22593 /* ProfileTweetCell.m */; };
 		3BA68A26268A6452005B88BD /* Keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3BA68A25268A6452005B88BD /* Keys.plist */; };
 		3BA68A29268A6D4F005B88BD /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BA68A28268A6D4F005B88BD /* User.m */; };
 		3BA68A2C268A6E3C005B88BD /* Tweet.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BA68A2B268A6E3C005B88BD /* Tweet.m */; };
@@ -27,6 +29,10 @@
 		1397EA94AE1DE5F26C1724FD /* Pods-twitter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-twitter.release.xcconfig"; path = "Pods/Target Support Files/Pods-twitter/Pods-twitter.release.xcconfig"; sourceTree = "<group>"; };
 		3B31CADF268A898500A22593 /* TweetCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TweetCell.h; sourceTree = "<group>"; };
 		3B31CAE0268A898500A22593 /* TweetCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TweetCell.m; sourceTree = "<group>"; };
+		3B31CAE4268AC15100A22593 /* ProfileViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
+		3B31CAE5268AC15100A22593 /* ProfileViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
+		3B31CAE7268AC57900A22593 /* ProfileTweetCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProfileTweetCell.h; sourceTree = "<group>"; };
+		3B31CAE8268AC57A00A22593 /* ProfileTweetCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProfileTweetCell.m; sourceTree = "<group>"; };
 		3BA68A25268A6452005B88BD /* Keys.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Keys.plist; sourceTree = "<group>"; };
 		3BA68A27268A6D4F005B88BD /* User.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
 		3BA68A28268A6D4F005B88BD /* User.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
@@ -136,6 +142,8 @@
 			children = (
 				3B31CADF268A898500A22593 /* TweetCell.h */,
 				3B31CAE0268A898500A22593 /* TweetCell.m */,
+				3B31CAE7268AC57900A22593 /* ProfileTweetCell.h */,
+				3B31CAE8268AC57A00A22593 /* ProfileTweetCell.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -147,6 +155,8 @@
 				6AD2790520BCC0380085BC29 /* LoginViewController.m */,
 				6AD2790720BCC04D0085BC29 /* TimelineViewController.h */,
 				6AD2790820BCC04D0085BC29 /* TimelineViewController.m */,
+				3B31CAE4268AC15100A22593 /* ProfileViewController.h */,
+				3B31CAE5268AC15100A22593 /* ProfileViewController.m */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -257,6 +267,8 @@
 				6AD278F320BCA6020085BC29 /* BDBOAuth1SessionManager+SFAuthenticationSession.m in Sources */,
 				3BA68A29268A6D4F005B88BD /* User.m in Sources */,
 				6AD278E820BC4B970085BC29 /* main.m in Sources */,
+				3B31CAE9268AC57A00A22593 /* ProfileTweetCell.m in Sources */,
+				3B31CAE6268AC15100A22593 /* ProfileViewController.m in Sources */,
 				3BA68A2C268A6E3C005B88BD /* Tweet.m in Sources */,
 				6AD2790620BCC0380085BC29 /* LoginViewController.m in Sources */,
 				6AD278DA20BC4B950085BC29 /* AppDelegate.m in Sources */,
