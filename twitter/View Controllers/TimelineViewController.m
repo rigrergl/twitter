@@ -16,6 +16,7 @@
 
 @property (nonatomic, strong) NSMutableArray * arrayOfTweets;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
+@property (nonatomic, strong) UIRefreshControl *refreshControl;
 
 @end
 
@@ -25,18 +26,22 @@
     [super viewDidLoad];
     self.collectionView.dataSource = self;
     self.collectionView.delegate = self;
-    
-    
-    // Get timeline
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    [self.refreshControl addTarget:self action:@selector(fetchTimeline) forControlEvents:UIControlEventValueChanged];
+    [self.collectionView insertSubview:self.refreshControl atIndex:0];
+    [self fetchTimeline];
+}
+
+- (void)fetchTimeline {
     [[APIManager shared] getHomeTimelineWithCompletion:^(NSArray *tweets, NSError *error) {
         if (tweets) {
             self.arrayOfTweets = tweets;
-            [self.collectionView reloadData];
             NSLog(@"😎😎😎 Successfully loaded home timeline");
         } else {
             NSLog(@"😫😫😫 Error getting home timeline: %@", error.localizedDescription);
         }
         [self.collectionView reloadData];
+        [self.refreshControl endRefreshing];
     }];
 }
 
@@ -46,8 +51,6 @@
 }
 
 - (IBAction)logoutButtonClicked:(UIButton *)sender {
-    NSLog(@"Logout called");
-    // TimelineViewController.m
     AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
 
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
@@ -71,8 +74,6 @@
     NSURL *url = [NSURL URLWithString:URLString];
     NSData *urlData = [NSData dataWithContentsOfURL:url];
     cell.profilePicture.image = [UIImage imageWithData:urlData];
-    
-    NSLog(@"///////////URL DATA: %@", urlData);
     
     return cell;
 }
