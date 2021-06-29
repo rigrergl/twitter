@@ -12,7 +12,9 @@
 #import "LoginViewController.h"
 #import "Tweet.h"
 #import "TweetCell.h"
-@interface TimelineViewController () <UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout>
+#import "ComposeViewController.h"
+
+@interface TimelineViewController () <ComposeViewControllerDelegate, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout>
 
 @property (nonatomic, strong) NSMutableArray * arrayOfTweets;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
@@ -82,25 +84,18 @@
     return self.arrayOfTweets.count;
 }
 
-//- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    Tweet* tweet = self.arrayOfTweets[indexPath.item];
-//    NSInteger textLength = tweet.text.length;
-//
-//    CGFloat cellHeight = textLength * 2 + 30;
-//    return CGSizeMake(CGRectGetWidth(collectionView.frame), cellHeight);
-//}
-
-
-/*
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    
+    UINavigationController *navigationController = [segue destinationViewController];
+    ComposeViewController *composeController = (ComposeViewController*)navigationController.topViewController;
+    composeController.delegate = self;
 }
-*/
+
 
 
 @end
