@@ -31,6 +31,7 @@
     [[APIManager shared] getHomeTimelineWithCompletion:^(NSArray *tweets, NSError *error) {
         if (tweets) {
             self.arrayOfTweets = tweets;
+            [self.collectionView reloadData];
             NSLog(@"😎😎😎 Successfully loaded home timeline");
         } else {
             NSLog(@"😫😫😫 Error getting home timeline: %@", error.localizedDescription);
@@ -64,6 +65,14 @@
     cell.screenName.text = tweet.user.screenName;
     cell.date.text = tweet.createdAtString;
     cell.text.text = tweet.text;
+    
+    //setting the image
+    NSString *URLString = tweet.user.profilePicture;
+    NSURL *url = [NSURL URLWithString:URLString];
+    NSData *urlData = [NSData dataWithContentsOfURL:url];
+    cell.profilePicture.image = [UIImage imageWithData:urlData];
+    
+    NSLog(@"///////////URL DATA: %@", urlData);
     
     return cell;
 }
