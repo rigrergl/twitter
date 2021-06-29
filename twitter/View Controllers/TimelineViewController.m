@@ -73,7 +73,11 @@
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    return CGSizeMake(CGRectGetWidth(collectionView.frame), (CGRectGetHeight(collectionView.frame)) / 2);
+    Tweet* tweet = self.arrayOfTweets[indexPath.item];
+    NSInteger textLength = tweet.text.length;
+    
+    CGFloat cellHeight = textLength * 2 + 30;
+    return CGSizeMake(CGRectGetWidth(collectionView.frame), cellHeight);
 }
 
 
