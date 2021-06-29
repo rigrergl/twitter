@@ -11,10 +11,11 @@
 #import "AppDelegate.h"
 #import "LoginViewController.h"
 #import "Tweet.h"
+#import "TweetCell.h"
+@interface TimelineViewController () <UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout>
 
-@interface TimelineViewController ()
-
-@property (nonatomic, strong) NSArray * arrayOfTweets;
+@property (nonatomic, strong) NSMutableArray * arrayOfTweets;
+@property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 
 @end
 
@@ -22,19 +23,18 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.collectionView.dataSource = self;
+    self.collectionView.delegate = self;
     
     // Get timeline
     [[APIManager shared] getHomeTimelineWithCompletion:^(NSArray *tweets, NSError *error) {
         if (tweets) {
             self.arrayOfTweets = tweets;
             NSLog(@"😎😎😎 Successfully loaded home timeline");
-            for (NSDictionary *dictionary in tweets) {
-                NSString *text = dictionary[@"text"];
-                NSLog(@"%@", text);
-            }
         } else {
             NSLog(@"😫😫😫 Error getting home timeline: %@", error.localizedDescription);
         }
+        [self.collectionView reloadData];
     }];
 }
 
@@ -53,6 +53,23 @@
     appDelegate.window.rootViewController = loginViewController;
     
     [[APIManager shared] logout];
+}
+
+- (nonnull __kindof UICollectionViewCell *)collectionView:(nonnull UICollectionView *)collectionView cellForItemAtIndexPath:(nonnull NSIndexPath *)indexPath {
+    TweetCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"TweetCell" forIndexPath:indexPath];
+    
+    cell.name = @"TEST NAME";
+    
+    return cell;
+}
+
+- (NSInteger)collectionView:(nonnull UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+    return self.arrayOfTweets.count;
+}
+
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    return CGSizeMake(CGRectGetWidth(collectionView.frame), (CGRectGetHeight(collectionView.frame)) / 2);
 }
 
 
