@@ -13,6 +13,8 @@ NS_ASSUME_NONNULL_BEGIN
 @interface TweetCell : UICollectionViewCell
 @property (weak, nonatomic) IBOutlet UILabel *name;
 @property (weak, nonatomic) IBOutlet UILabel *screenName;
+@property (weak, nonatomic) IBOutlet UILabel *date;
+@property (weak, nonatomic) IBOutlet UILabel *text;
 
 @end
 

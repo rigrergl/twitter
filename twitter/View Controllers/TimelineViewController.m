@@ -56,9 +56,13 @@
 }
 
 - (nonnull __kindof UICollectionViewCell *)collectionView:(nonnull UICollectionView *)collectionView cellForItemAtIndexPath:(nonnull NSIndexPath *)indexPath {
-    TweetCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"TweetCell" forIndexPath:indexPath];
+    TweetCell* cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"TweetCell" forIndexPath:indexPath];
     
-    cell.name = @"TEST NAME";
+    Tweet* tweet = self.arrayOfTweets[indexPath.item];
+    cell.name.text = tweet.user.name;
+    cell.screenName.text = tweet.user.screenName;
+    cell.date.text = tweet.createdAtString;
+    cell.text.text = tweet.text;
     
     return cell;
 }
