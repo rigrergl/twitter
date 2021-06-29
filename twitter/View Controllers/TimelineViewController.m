@@ -26,6 +26,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     self.collectionView.dataSource = self;
     self.collectionView.delegate = self;
     self.refreshControl = [[UIRefreshControl alloc] init];
@@ -83,6 +84,13 @@
 - (NSInteger)collectionView:(nonnull UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     return self.arrayOfTweets.count;
 }
+
+- (void)didTweet:(nonnull Tweet *)tweet {
+    NSLog(@"didTweet called: %@", tweet);
+    [self.arrayOfTweets insertObject:tweet atIndex:0];
+    [self.collectionView reloadData];
+}
+
 
 #pragma mark - Navigation
 

@@ -25,8 +25,9 @@
 }
 
 - (IBAction)tweetButtonClicked:(UIBarButtonItem *)sender {
-    [[APIManager shared] postStatusWithText: self.textView.text completion:^(Tweet *tweets, NSError *error) {
-        if (tweets) {
+    [[APIManager shared] postStatusWithText: self.textView.text completion:^(Tweet *tweet, NSError *error) {
+        if (!error) {
+            [self.delegate didTweet:tweet];
             NSLog(@"😎😎😎 Successfully uploaded Tweet");
         } else {
             NSLog(@"😫😫😫 Error uploading tweet: %@", error.localizedDescription);
