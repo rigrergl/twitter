@@ -34,7 +34,16 @@
         self.favoritedCount -= 1;
         //Update cell UI
         [self refreshData];
+        
         // TODO: Send a POST request to the POST favorites/destroy endpoint
+        [[APIManager shared] unfavorite:self.tweet completion: ^(Tweet *tweet, NSError *error){
+            if(error){
+                 NSLog(@"Error favoriting tweet: %@", error.localizedDescription);
+            }
+            else{
+                NSLog(@"Successfully unfavorited the following Tweet: %@", tweet.text);
+            }
+        }];
     }
 }
 
