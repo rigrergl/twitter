@@ -7,6 +7,7 @@
 //
 
 #import "TweetCell.h"
+#import "APIManager.h"
 
 @implementation TweetCell
 
@@ -17,14 +18,23 @@
         self.favoritedCount += 1;
         //Update cell UI
         [self refreshData];
-        // TODO: Send a POST request to the POST favorites/create endpoint
+        
+        //Send a POST request to the POST favorites/create endpoint
+        [[APIManager shared] favorite:self.tweet completion:^(Tweet *tweet, NSError *error) {
+             if(error){
+                  NSLog(@"Error favoriting tweet: %@", error.localizedDescription);
+             }
+             else{
+                 NSLog(@"Successfully favorited the following Tweet: %@", tweet.text);
+             }
+         }];
     } else {
         //Update the local tweet model
         self.favorited = NO;
         self.favoritedCount -= 1;
         //Update cell UI
         [self refreshData];
-        // TODO: Send a POST request to the POST favorites/create endpoint
+        // TODO: Send a POST request to the POST favorites/destroy endpoint
     }
 }
 

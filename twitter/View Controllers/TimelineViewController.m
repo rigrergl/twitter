@@ -16,7 +16,7 @@
 
 @interface TimelineViewController () <ComposeViewControllerDelegate, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout>
 
-@property (nonatomic, strong) NSMutableArray * arrayOfTweets;
+@property (nonatomic, strong) NSMutableArray *arrayOfTweets;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
 
@@ -68,9 +68,9 @@
 }
 
 - (nonnull __kindof UICollectionViewCell *)collectionView:(nonnull UICollectionView *)collectionView cellForItemAtIndexPath:(nonnull NSIndexPath *)indexPath {
-    TweetCell* cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"TweetCell" forIndexPath:indexPath];
+    TweetCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"TweetCell" forIndexPath:indexPath];
     
-    Tweet* tweet = self.arrayOfTweets[indexPath.item];
+    Tweet *tweet = self.arrayOfTweets[indexPath.item];
     cell.name.text = tweet.user.name;
     cell.screenName.text = tweet.user.screenName;
     cell.date.text = tweet.createdAtString;
@@ -80,6 +80,7 @@
     cell.favoritedCount = tweet.favoriteCount;
     cell.retweetCount = tweet.retweetCount;
     cell.favorited = tweet.favorited;
+    cell.tweet = tweet;
     
     //set cell buttons
     [cell.favoriteButton setBackgroundImage:[UIImage imageNamed:@"favor-icon"] forState: UIControlStateNormal];
