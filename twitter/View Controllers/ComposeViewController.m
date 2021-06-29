@@ -20,6 +20,7 @@
 }
 
 - (IBAction)closeButtonClicked:(UIBarButtonItem *)sender {
+    [self dismissViewControllerAnimated:true completion:nil];
 }
 
 - (IBAction)tweetButtonClicked:(UIBarButtonItem *)sender {
