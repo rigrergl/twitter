@@ -22,7 +22,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic) NSInteger retweetCount;
 @property (nonatomic) NSInteger favoritedCount;
 @property (nonatomic) BOOL favorited;
+@property (nonatomic) BOOL retweeted;
 @property (weak, nonatomic) IBOutlet UIButton *favoriteButton;
+@property (weak, nonatomic) IBOutlet UIButton *retweetButton;
 @property (weak, nonatomic) Tweet *tweet;
 
 @end

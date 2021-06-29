@@ -156,6 +156,9 @@
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="POy-rB-7Np">
                                                     <rect key="frame" x="79" y="474" width="30" height="30"/>
                                                     <state key="normal" backgroundImage="retweet-icon"/>
+                                                    <connections>
+                                                        <action selector="didTapRetweet:" destination="PgJ-Qw-Mvc" eventType="touchUpInside" id="5UD-Im-ScX"/>
+                                                    </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Llb-Xj-0X3">
                                                     <rect key="frame" x="152" y="474" width="30" height="30"/>
@@ -225,6 +228,7 @@
                                             <outlet property="favoritedLabel" destination="w0l-De-s82" id="bYD-kb-Nvk"/>
                                             <outlet property="name" destination="PkV-gE-G15" id="Gdr-7t-CEd"/>
                                             <outlet property="profilePicture" destination="QWd-Bo-xZT" id="xLi-Sb-i2r"/>
+                                            <outlet property="retweetButton" destination="POy-rB-7Np" id="MbR-2m-OA6"/>
                                             <outlet property="retweetCountLabel" destination="qhh-Rh-DAg" id="Dey-1I-xKX"/>
                                             <outlet property="screenName" destination="mS6-dP-8XD" id="dc4-fn-g70"/>
                                             <outlet property="text" destination="W8Z-6j-mc8" id="ccb-8E-061"/>

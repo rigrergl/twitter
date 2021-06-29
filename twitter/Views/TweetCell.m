@@ -38,7 +38,7 @@
         // TODO: Send a POST request to the POST favorites/destroy endpoint
         [[APIManager shared] unfavorite:self.tweet completion: ^(Tweet *tweet, NSError *error){
             if(error){
-                 NSLog(@"Error favoriting tweet: %@", error.localizedDescription);
+                 NSLog(@"Error unfavoriting tweet: %@", error.localizedDescription);
             }
             else{
                 NSLog(@"Successfully unfavorited the following Tweet: %@", tweet.text);
@@ -47,10 +47,48 @@
     }
 }
 
+- (IBAction)didTapRetweet:(UIButton *)sender {
+    if(!self.retweeted) {
+        //Update the local tweet model
+        self.retweeted = YES;
+        self.retweetCount += 1;
+        //Update cell UI
+        [self refreshData];
+        
+        //Send a POST request to the POST favorites/create endpoint
+        [[APIManager shared] retweet:self.tweet completion:^(Tweet *tweet, NSError *error) {
+             if(error){
+                  NSLog(@"Error retweeting tweet: %@", error.localizedDescription);
+             }
+             else{
+                 NSLog(@"Successfully retweeted the following Tweet: %@", tweet.text);
+             }
+         }];
+    } else {
+        //Update the local tweet model
+        self.retweeted = NO;
+        self.retweetCount -= 1;
+        //Update cell UI
+        [self refreshData];
+        
+        //Send a POST request to the POST favorites/destroy endpoint
+        [[APIManager shared] unretweet:self.tweet completion: ^(Tweet *tweet, NSError *error){
+            if(error){
+                 NSLog(@"Error unretweeting tweet: %@", error.localizedDescription);
+            }
+            else{
+                NSLog(@"Successfully unretweeted the following Tweet: %@", tweet.text);
+            }
+        }];
+    }
+}
+
+
 - (void) refreshData{
     self.favoritedLabel.text = [NSString stringWithFormat:@"%ld", self.favoritedCount];
     self.retweetCountLabel.text = [NSString stringWithFormat:@"%ld", self.retweetCount];
     [self.favoriteButton setSelected:self.favorited];
+    [self.retweetButton setSelected:self.retweeted];
 }
 
 @end

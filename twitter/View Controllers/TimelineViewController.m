@@ -80,12 +80,16 @@
     cell.favoritedCount = tweet.favoriteCount;
     cell.retweetCount = tweet.retweetCount;
     cell.favorited = tweet.favorited;
+    cell.retweeted = tweet.retweeted;
     cell.tweet = tweet;
     
     //set cell buttons
     [cell.favoriteButton setBackgroundImage:[UIImage imageNamed:@"favor-icon"] forState: UIControlStateNormal];
     [cell.favoriteButton setBackgroundImage:[UIImage imageNamed:@"favor-icon-red"] forState: UIControlStateSelected];
     [cell.favoriteButton setSelected:tweet.favorited];
+    [cell.retweetButton setBackgroundImage:[UIImage imageNamed:@"retweet-icon"] forState: UIControlStateNormal];
+    [cell.retweetButton setBackgroundImage:[UIImage imageNamed:@"retweet-icon-green"] forState: UIControlStateSelected];
+    [cell.retweetButton setSelected:tweet.retweeted];
     
     //setting the image
     NSString *URLString = tweet.user.profilePicture;
