@@ -71,6 +71,16 @@
     cell.screenName.text = tweet.user.screenName;
     cell.date.text = tweet.createdAtString;
     cell.text.text = tweet.text;
+    cell.favoritedLabel.text = [NSString stringWithFormat:@"%d", tweet.favoriteCount];
+    cell.retweetCountLabel.text = [NSString stringWithFormat:@"%d", tweet.retweetCount];
+    cell.favoritedCount = tweet.favoriteCount;
+    cell.retweetCount = tweet.retweetCount;
+    cell.favorited = tweet.favorited;
+    
+    //set cell buttons
+    [cell.favoriteButton setBackgroundImage:[UIImage imageNamed:@"favor-icon"] forState: UIControlStateNormal];
+    [cell.favoriteButton setBackgroundImage:[UIImage imageNamed:@"favor-icon-red"] forState: UIControlStateSelected];
+    [cell.favoriteButton setSelected:tweet.favorited];
     
     //setting the image
     NSString *URLString = tweet.user.profilePicture;
