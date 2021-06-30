@@ -13,6 +13,7 @@
 #import "Tweet.h"
 #import "TweetCell.h"
 #import "ComposeViewController.h"
+#import "DetailsViewController.h"
 
 @interface TimelineViewController () <ComposeViewControllerDelegate, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout>
 
@@ -71,35 +72,7 @@
     TweetCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"TweetCell" forIndexPath:indexPath];
     
     Tweet *tweet = self.arrayOfTweets[indexPath.item];
-    cell.name.text = tweet.user.name;
-    
-    //adding "@" to screenname
-    NSString * leadingString  = @"@";
-    cell.screenName.text = [leadingString stringByAppendingString: tweet.user.screenName];
-    
-    cell.date.text = tweet.createdAtString;
-    cell.text.text = tweet.text;
-    cell.favoritedLabel.text = [NSString stringWithFormat:@"%d", tweet.favoriteCount];
-    cell.retweetCountLabel.text = [NSString stringWithFormat:@"%d", tweet.retweetCount];
-    cell.favoritedCount = tweet.favoriteCount;
-    cell.retweetCount = tweet.retweetCount;
-    cell.favorited = tweet.favorited;
-    cell.retweeted = tweet.retweeted;
-    cell.tweet = tweet;
-    
-    //set cell buttons
-    [cell.favoriteButton setBackgroundImage:[UIImage imageNamed:@"favor-icon"] forState: UIControlStateNormal];
-    [cell.favoriteButton setBackgroundImage:[UIImage imageNamed:@"favor-icon-red"] forState: UIControlStateSelected];
-    [cell.favoriteButton setSelected:tweet.favorited];
-    [cell.retweetButton setBackgroundImage:[UIImage imageNamed:@"retweet-icon"] forState: UIControlStateNormal];
-    [cell.retweetButton setBackgroundImage:[UIImage imageNamed:@"retweet-icon-green"] forState: UIControlStateSelected];
-    [cell.retweetButton setSelected:tweet.retweeted];
-    
-    //setting the image
-    NSString *URLString = tweet.user.profilePicture;
-    NSURL *url = [NSURL URLWithString:URLString];
-    NSData *urlData = [NSData dataWithContentsOfURL:url];
-    cell.profilePicture.image = [UIImage imageWithData:urlData];
+    [cell setTweet:tweet];
     
     return cell;
 }
@@ -124,11 +97,13 @@
     
     if([segue.identifier isEqualToString:@"homeToCompose"]) {
         UINavigationController *navigationController = [segue destinationViewController];
-        ComposeViewController *composeController = (ComposeViewController*)navigationController.topViewController;
+        ComposeViewController *composeController = (ComposeViewController *)navigationController.topViewController;
         composeController.delegate = self;
     }
     else if ([segue.identifier isEqualToString:@"homeToDetails"]) {
         // TODO: Prepare segue to details view
+        DetailsViewController *detailsViewController = [segue destinationViewController];
+        
     }
 }
 

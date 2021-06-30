@@ -8,7 +8,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.ExceptionBreakpoint">
          <BreakpointContent
             uuid = "4038AC11-E35F-4D4B-8C2C-C325AF6239E9"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             nameForDebugger = "ExceptionBreakpoint"
             ignoreCount = "0"
             continueAfterRunningActions = "No"

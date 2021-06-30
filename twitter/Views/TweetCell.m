@@ -84,11 +84,43 @@
 }
 
 
-- (void) refreshData{
+- (void)refreshData{
     self.favoritedLabel.text = [NSString stringWithFormat:@"%ld", self.favoritedCount];
     self.retweetCountLabel.text = [NSString stringWithFormat:@"%ld", self.retweetCount];
     [self.favoriteButton setSelected:self.favorited];
     [self.retweetButton setSelected:self.retweeted];
+}
+
+- (void)setTweet: (Tweet *) tweet {
+    _tweet = tweet;
+    self.name.text = tweet.user.name;
+
+    //adding "@" to screenname
+    NSString * leadingString  = @"@";
+    self.screenName.text = [leadingString stringByAppendingString: tweet.user.screenName];
+
+    self.date.text = self.tweet.createdAtString;
+    self.text.text = self.tweet.text;
+    self.favoritedLabel.text = [NSString stringWithFormat:@"%d", tweet.favoriteCount];
+    self.retweetCountLabel.text = [NSString stringWithFormat:@"%d", tweet.retweetCount];
+    self.favoritedCount = tweet.favoriteCount;
+    self.retweetCount = tweet.retweetCount;
+    self.favorited = tweet.favorited;
+    self.retweeted = tweet.retweeted;
+
+    //set cell buttons
+    [self.favoriteButton setBackgroundImage:[UIImage imageNamed:@"favor-icon"] forState: UIControlStateNormal];
+    [self.favoriteButton setBackgroundImage:[UIImage imageNamed:@"favor-icon-red"] forState: UIControlStateSelected];
+    [self.favoriteButton setSelected:tweet.favorited];
+    [self.retweetButton setBackgroundImage:[UIImage imageNamed:@"retweet-icon"] forState: UIControlStateNormal];
+    [self.retweetButton setBackgroundImage:[UIImage imageNamed:@"retweet-icon-green"] forState: UIControlStateSelected];
+    [self.retweetButton setSelected:tweet.retweeted];
+
+    //setting the image
+    NSString *URLString = tweet.user.profilePicture;
+    NSURL *url = [NSURL URLWithString:URLString];
+    NSData *urlData = [NSData dataWithContentsOfURL:url];
+    self.profilePicture.image = [UIImage imageWithData:urlData];
 }
 
 @end

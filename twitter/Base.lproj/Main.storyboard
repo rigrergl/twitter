@@ -274,10 +274,10 @@
             </objects>
             <point key="canvasLocation" x="2599.1999999999998" y="36.431784107946029"/>
         </scene>
-        <!--View Controller-->
+        <!--DetailsViewController-->
         <scene sceneID="6xD-CJ-u2N">
             <objects>
-                <viewController id="VlC-Hh-xrn" sceneMemberID="viewController">
+                <viewController restorationIdentifier="DetailsViewController" storyboardIdentifier="DetailsViewController" title="DetailsViewController" id="VlC-Hh-xrn" customClass="DetailsViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="9dm-a2-tKD">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
