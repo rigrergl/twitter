@@ -22,7 +22,7 @@
     // Initialization code
 }
 
-///
+
 - (instancetype)initWithCoder:(NSCoder *)aDecoder {
     self = [super initWithCoder:aDecoder];
     
@@ -44,10 +44,10 @@
 }
 
 - (void)customInit {
-//    [[NSBundle mainBundle] loadNibNamed:@"TweetCollectionViewCell" owner:self options:nil];
+    [[NSBundle mainBundle] loadNibNamed:@"TweetCollectionViewCell" owner:self options:nil];
     [self addSubview:self.contentView];
     self.contentView.frame = self.bounds;
 }
-///
+
 
 @end
