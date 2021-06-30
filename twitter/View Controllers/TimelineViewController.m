@@ -72,7 +72,11 @@
     
     Tweet *tweet = self.arrayOfTweets[indexPath.item];
     cell.name.text = tweet.user.name;
-    cell.screenName.text = tweet.user.screenName;
+    
+    //adding "@" to screenname
+    NSString * leadingString  = @"@";
+    cell.screenName.text = [leadingString stringByAppendingString: tweet.user.screenName];
+    
     cell.date.text = tweet.createdAtString;
     cell.text.text = tweet.text;
     cell.favoritedLabel.text = [NSString stringWithFormat:@"%d", tweet.favoriteCount];
