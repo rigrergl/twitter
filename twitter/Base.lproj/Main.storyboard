@@ -239,6 +239,7 @@
                                             <outlet property="retweetCountLabel" destination="qhh-Rh-DAg" id="Dey-1I-xKX"/>
                                             <outlet property="screenName" destination="mS6-dP-8XD" id="dc4-fn-g70"/>
                                             <outlet property="text" destination="W8Z-6j-mc8" id="ccb-8E-061"/>
+                                            <segue destination="VlC-Hh-xrn" kind="show" identifier="homeToDetails" id="RNf-BF-Y0Z"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -256,7 +257,7 @@
                     <navigationItem key="navigationItem" title="Home Timeline" id="MOc-fV-EZE">
                         <barButtonItem key="leftBarButtonItem" title="Item" image="edit-icon" id="AJn-W7-tqb">
                             <connections>
-                                <segue destination="YsU-kd-0a9" kind="presentation" id="NYw-nj-zBF"/>
+                                <segue destination="YsU-kd-0a9" kind="presentation" identifier="homeToCompose" id="NYw-nj-zBF"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Logout" id="kdv-33-xu6">
@@ -272,6 +273,22 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oQh-hN-GQg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2599.1999999999998" y="36.431784107946029"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="6xD-CJ-u2N">
+            <objects>
+                <viewController id="VlC-Hh-xrn" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="9dm-a2-tKD">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="PsC-UV-LD8"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="m1t-wZ-Pxa"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MDC-lA-O3b" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3440" y="26"/>
         </scene>
         <!--Timeline-->
         <scene sceneID="WUT-Ke-VeR">
