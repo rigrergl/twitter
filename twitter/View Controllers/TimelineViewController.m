@@ -15,11 +15,12 @@
 #import "ComposeViewController.h"
 #import "TweetDetailsViewController.h"
 
-@interface TimelineViewController () <ComposeViewControllerDelegate, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout>
+@interface TimelineViewController () <ComposeViewControllerDelegate, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UIScrollViewDelegate>
 
 @property (nonatomic, strong) NSMutableArray *arrayOfTweets;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
+@property (assign, nonatomic) BOOL isMoreDataLoading;
 
 @end
 
@@ -38,6 +39,9 @@
     
     UICollectionViewFlowLayout *layout = self.collectionView.collectionViewLayout;
     layout.estimatedItemSize = UICollectionViewFlowLayoutAutomaticSize;
+    
+    //disabling AutoLayout logs
+    [[NSUserDefaults standardUserDefaults] setValue:@(NO) forKey:@"_UIConstraintBasedLayoutLogUnsatisfiable"];
 }
 
 - (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator{
@@ -95,11 +99,6 @@
         cell.textWidthConstraint.constant = [@(MAX(safeAreaWidth - 150, minWidth)) doubleValue]; //making sure it's the min size
     }
     
-    //checking if more cells need to be loaded(for infinite scroll)
-    if(indexPath.item == self.arrayOfTweets.count-1) {
-        [self loadMoreData: self.arrayOfTweets.count + 20];
-    }
-    
     return cell;
 }
 
@@ -115,16 +114,32 @@
     return 0;
 }
 
-- (void)loadMoreData: (NSInteger) count{
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    if(!self.isMoreDataLoading){
+        // Calculate the position of one screen length before the bottom of the results
+        int scrollViewContentHeight = self.collectionView.contentSize.height;
+        int scrollOffsetThreshold = scrollViewContentHeight - self.collectionView.bounds.size.height;
+        
+        // When the user has scrolled past the threshold, start requesting
+        if(scrollView.contentOffset.y > scrollOffsetThreshold && self.collectionView.isDragging) {
+            self.isMoreDataLoading = true;
+            [self loadMoreData];
+        }
+    }
+}
+
+- (void)loadMoreData{
     NSLog(@"LOG MORE DATA CALLED//////////////////////////////////////////////////");
-    [[APIManager shared] getHomeTimelineWithCompletion:^(NSArray *tweets, NSError *error) {
+    [[APIManager shared] getHomeTimelineWithCompletion: (self.arrayOfTweets.count + 20) completion: ^(NSArray *tweets, NSError *error) {
         if (tweets) {
-            [self.arrayOfTweets addObjectsFromArray:tweets];
+            self.arrayOfTweets = tweets;
             NSLog(@"😎😎😎 Successfully loaded more tweets");
         } else {
             NSLog(@"😫😫😫 Error getting more tweets: %@", error.localizedDescription);
         }
+        self.isMoreDataLoading = false;
         [self.collectionView reloadData];
+        
     }];
 }
 #pragma mark - Navigation
