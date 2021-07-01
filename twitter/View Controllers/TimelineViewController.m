@@ -14,6 +14,7 @@
 #import "TweetCell.h"
 #import "ComposeViewController.h"
 #import "TweetDetailsViewController.h"
+#import "UserProfileViewController.h"
 
 @interface TimelineViewController () <ComposeViewControllerDelegate, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UIScrollViewDelegate, TweetCellDelegate>
 
@@ -162,15 +163,25 @@
         composeController.delegate = self;
     }
     else if ([segue.identifier isEqualToString:@"homeToDetails"]) {
-        // TODO: Prepare segue to details view
+        //Prepare segue to details view
         TweetDetailsViewController *tweetDetailsViewController = [segue destinationViewController];
         
         //getting the tweet to display
         TweetCell *tappedCell = sender;
         Tweet *tweet = tappedCell.tweet;
-        
+
         //initializing view controller
         tweetDetailsViewController.tweet = tweet;
+        
+    }
+    else if ([segue.identifier isEqualToString:@"profileSegue"]) {
+        //Prepare segue to details view
+        UserProfileViewController *userProfileViewController = [segue destinationViewController];
+        
+        //getting the user to display
+        User *user = sender;
+        //initializing view controller
+        userProfileViewController.user = user;
         
     }
 }
