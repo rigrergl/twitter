@@ -21,6 +21,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UILabel *followingCountLabel;
 @property (weak, nonatomic) IBOutlet UILabel *followersCountLabel;
 @property (weak, nonatomic) IBOutlet UILabel *tweetsCountLabel;
+@property (weak, nonatomic) IBOutlet UILabel *locationLabel;
 
 @property (weak, nonatomic) User *user;
 

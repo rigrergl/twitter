@@ -130,8 +130,8 @@
         
         // When the user has scrolled past the threshold, start requesting
         if(scrollView.contentOffset.y > scrollOffsetThreshold && self.collectionView.isDragging) {
-            self.isMoreDataLoading = true;
-            [self loadMoreData];
+//            self.isMoreDataLoading = true;
+//            [self loadMoreData];
         }
     }
 }

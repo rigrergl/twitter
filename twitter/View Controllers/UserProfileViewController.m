@@ -20,6 +20,7 @@
     self.nameLabel.text = self.user.name;
     self.screenNameLabel.text = self.user.screenName;
     self.descriptionLabel.text = self.user.userDescription;
+    self.locationLabel.text = self.user.location;
     self.followingCountLabel.text = [NSNumberFormatter localizedStringFromNumber: self.user.followingCount numberStyle:nil];
     self.followersCountLabel.text = [NSNumberFormatter localizedStringFromNumber: self.user.followersCount numberStyle:nil];
     self.tweetsCountLabel.text = [NSNumberFormatter localizedStringFromNumber: self.user.tweetsCount numberStyle:nil];
