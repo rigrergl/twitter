@@ -7,10 +7,21 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Tweet.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface TweetDetailsViewController : UIViewController
+
+//properties
+@property (weak, nonatomic) Tweet *tweet;
+@property (nonatomic) NSInteger retweetCount;
+@property (nonatomic) NSInteger favoritedCount;
+@property (nonatomic) BOOL favorited;
+@property (nonatomic) BOOL retweeted;
+
+//methods
+- (void)setTweet: (Tweet *)tweet;
 
 @end
 

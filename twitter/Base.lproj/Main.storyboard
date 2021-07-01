@@ -310,6 +310,9 @@
                                     <constraint firstAttribute="height" constant="30" id="U4E-tr-mBP"/>
                                 </constraints>
                                 <state key="normal" backgroundImage="retweet-icon"/>
+                                <connections>
+                                    <action selector="didTapRetweet:" destination="VlC-Hh-xrn" eventType="touchUpInside" id="3ze-0A-yL3"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Name Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2c6-VB-amd">
                                 <rect key="frame" x="84" y="63" width="96" height="21"/>
@@ -359,6 +362,9 @@
                                     <constraint firstAttribute="width" constant="30" id="iTj-YD-iC4"/>
                                 </constraints>
                                 <state key="normal" backgroundImage="favor-icon"/>
+                                <connections>
+                                    <action selector="didTapFavorite:" destination="VlC-Hh-xrn" eventType="touchUpInside" id="Qka-nm-Snl"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="PsC-UV-LD8"/>
@@ -388,6 +394,17 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="m1t-wZ-Pxa"/>
+                    <connections>
+                        <outlet property="date" destination="bJz-qg-oe0" id="czd-RO-BX9"/>
+                        <outlet property="favoriteButton" destination="YWG-w2-c5q" id="5WW-gF-J4c"/>
+                        <outlet property="favoriteCountLabel" destination="Fgw-df-NaU" id="BEN-3p-kSx"/>
+                        <outlet property="name" destination="2c6-VB-amd" id="3pR-ru-iow"/>
+                        <outlet property="profilePicture" destination="Zyw-j0-96Y" id="h8M-AB-qDK"/>
+                        <outlet property="retweetButton" destination="Vzo-jj-T4e" id="7BG-Xf-0ij"/>
+                        <outlet property="retweetCountLabel" destination="bO2-Ab-NSl" id="iC2-bh-eRR"/>
+                        <outlet property="screenName" destination="zMQ-cn-M4c" id="oBF-1E-DVH"/>
+                        <outlet property="text" destination="arB-LC-Al6" id="ZCU-ww-j0V"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MDC-lA-O3b" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

@@ -13,7 +13,7 @@
 #import "Tweet.h"
 #import "TweetCell.h"
 #import "ComposeViewController.h"
-#import "DetailsViewController.h"
+#import "TweetDetailsViewController.h"
 
 @interface TimelineViewController () <ComposeViewControllerDelegate, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout>
 
@@ -124,7 +124,14 @@
     }
     else if ([segue.identifier isEqualToString:@"homeToDetails"]) {
         // TODO: Prepare segue to details view
-        DetailsViewController *detailsViewController = [segue destinationViewController];
+        TweetDetailsViewController *tweetDetailsViewController = [segue destinationViewController];
+        
+        //getting the tweet to display
+        TweetCell *tappedCell = sender;
+        Tweet *tweet = tappedCell.tweet;
+        
+        //initializing view controller
+        tweetDetailsViewController.tweet = tweet;
         
     }
 }
