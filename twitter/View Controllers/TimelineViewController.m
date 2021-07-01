@@ -96,7 +96,7 @@
     }
     
     //checking if more cells need to be loaded(for infinite scroll)
-    if(indexPath.row == self.arrayOfTweets.count-1) {
+    if(indexPath.item == self.arrayOfTweets.count-1) {
         [self loadMoreData: self.arrayOfTweets.count + 20];
     }
     
@@ -117,7 +117,7 @@
 
 - (void)loadMoreData: (NSInteger) count{
     NSLog(@"LOG MORE DATA CALLED//////////////////////////////////////////////////");
-    [[APIManager shared] getHomeTimelineWithCompletion: count completion:^(NSArray *tweets, NSError *error) {
+    [[APIManager shared] getHomeTimelineWithCompletion:^(NSArray *tweets, NSError *error) {
         if (tweets) {
             [self.arrayOfTweets addObjectsFromArray:tweets];
             NSLog(@"😎😎😎 Successfully loaded more tweets");
