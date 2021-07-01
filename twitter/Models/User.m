@@ -16,7 +16,13 @@
         self.name = dictionary[@"name"];
         self.screenName = dictionary[@"screen_name"];
         self.profilePicture = dictionary[@"profile_image_url_https"];
-        // Initialize any other properties
+        self.bannerPicture = dictionary[@"profile_banner_url"];
+        self.location = dictionary[@"location"];
+        self.userDescription = dictionary[@"description"];
+        self.verified = [dictionary[@"verified"] boolValue];
+        self.followersCount = [dictionary[@"followers_count"] integerValue];
+        self.followingCount = [dictionary[@"friends_count"] integerValue];
+        self.tweetsCount = [dictionary[@"statuses_count"] integerValue];
     }
     return self;
 }
