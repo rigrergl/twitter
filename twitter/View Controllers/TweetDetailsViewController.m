@@ -1,18 +1,18 @@
 //
-//  DetailsViewController.m
+//  TweetDetailsViewController.m
 //  twitter
 //
 //  Created by Rigre Reinier Garciandia Larquin on 6/30/21.
 //  Copyright © 2021 Emerson Malca. All rights reserved.
 //
 
-#import "DetailsViewController.h"
+#import "TweetDetailsViewController.h"
 
-@interface DetailsViewController ()
+@interface TweetDetailsViewController ()
 
 @end
 
-@implementation DetailsViewController
+@implementation TweetDetailsViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];

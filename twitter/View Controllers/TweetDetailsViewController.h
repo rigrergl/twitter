@@ -1,5 +1,5 @@
 //
-//  DetailsViewController.h
+//  TweetDetailsViewController.h
 //  twitter
 //
 //  Created by Rigre Reinier Garciandia Larquin on 6/30/21.
@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface DetailsViewController : UIViewController
+@interface TweetDetailsViewController : UIViewController
 
 @end
 
