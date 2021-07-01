@@ -79,7 +79,7 @@
 }
 
 #pragma mark - Collection View Delegate Methods
-- (nonnull __kindof UICollectionViewCell *)collectionView:(nonnull UICollectionView *)collectionView cellForItemAtIndexPath:(nonnull NSIndexPath *)indexPath {
+- (nonnull UICollectionViewCell *)collectionView:(nonnull UICollectionView *)collectionView cellForItemAtIndexPath:(nonnull NSIndexPath *)indexPath {
     TweetCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"TweetCell" forIndexPath:indexPath];
     
     Tweet *tweet = self.arrayOfTweets[indexPath.item];
@@ -93,6 +93,11 @@
     }
     else {
         cell.textWidthConstraint.constant = [@(MAX(safeAreaWidth - 150, minWidth)) doubleValue]; //making sure it's the min size
+    }
+    
+    //checking if more cells need to be loaded(for infinite scroll)
+    if(indexPath.row == self.arrayOfTweets.count-1) {
+        [self loadMoreData: self.arrayOfTweets.count + 20];
     }
     
     return cell;
@@ -110,6 +115,18 @@
     return 0;
 }
 
+- (void)loadMoreData: (NSInteger) count{
+    NSLog(@"LOG MORE DATA CALLED//////////////////////////////////////////////////");
+    [[APIManager shared] getHomeTimelineWithCompletion: count completion:^(NSArray *tweets, NSError *error) {
+        if (tweets) {
+            [self.arrayOfTweets addObjectsFromArray:tweets];
+            NSLog(@"😎😎😎 Successfully loaded more tweets");
+        } else {
+            NSLog(@"😫😫😫 Error getting more tweets: %@", error.localizedDescription);
+        }
+        [self.collectionView reloadData];
+    }];
+}
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
