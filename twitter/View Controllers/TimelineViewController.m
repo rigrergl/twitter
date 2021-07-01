@@ -74,14 +74,19 @@
     Tweet *tweet = self.arrayOfTweets[indexPath.item];
     [cell setTweet:tweet];
     
+    CGRect screenRect = [[UIScreen mainScreen] bounds];
+    CGFloat screenWidth = screenRect.size.width;
+    NSLog(@"Screen Width: %f", screenWidth);
+    
     [cell addConstraint:[NSLayoutConstraint constraintWithItem:cell.text
           attribute:NSLayoutAttributeWidth
           relatedBy:NSLayoutRelationEqual
           toItem:nil
           attribute:NSLayoutAttributeNotAnAttribute
           multiplier:1.0
-          constant:200]];
+          constant:screenWidth - 150]];
     
+
     return cell;
 }
 
