@@ -23,6 +23,9 @@
         self.followersCount = (NSNumber *)dictionary[@"followers_count"];
         self.followingCount = (NSNumber *)dictionary[@"friends_count"];
         self.tweetsCount = (NSNumber *)dictionary[@"statuses_count"];
+        
+        //making sure the profile image is not blurry
+        self.profilePicture = [self.profilePicture stringByReplacingOccurrencesOfString:@"_normal" withString:@""];
     }
     return self;
 }
