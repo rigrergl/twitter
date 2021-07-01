@@ -19,6 +19,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self.textView becomeFirstResponder];
+    self.textView.delegate = self;
 }
 
 - (IBAction)closeButtonClicked:(UIBarButtonItem *)sender {

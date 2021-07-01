@@ -122,34 +122,6 @@
     return 0;
 }
 
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
-    if(!self.isMoreDataLoading){
-        // Calculate the position of one screen length before the bottom of the results
-        int scrollViewContentHeight = self.collectionView.contentSize.height;
-        int scrollOffsetThreshold = scrollViewContentHeight - self.collectionView.bounds.size.height;
-        
-        // When the user has scrolled past the threshold, start requesting
-        if(scrollView.contentOffset.y > scrollOffsetThreshold && self.collectionView.isDragging) {
-//            self.isMoreDataLoading = true;
-//            [self loadMoreData];
-        }
-    }
-}
-
-- (void)loadMoreData{
-    NSLog(@"LOG MORE DATA CALLED//////////////////////////////////////////////////");
-    [[APIManager shared] getHomeTimelineWithCompletion: (self.arrayOfTweets.count + 20) completion: ^(NSArray *tweets, NSError *error) {
-        if (tweets) {
-            self.arrayOfTweets = tweets;
-            NSLog(@"😎😎😎 Successfully loaded more tweets");
-        } else {
-            NSLog(@"😫😫😫 Error getting more tweets: %@", error.localizedDescription);
-        }
-        self.isMoreDataLoading = false;
-        [self.collectionView reloadData];
-        
-    }];
-}
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
