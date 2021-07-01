@@ -11,6 +11,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+//properties
 @interface TweetCell : UICollectionViewCell
 @property (weak, nonatomic) IBOutlet UILabel *name;
 @property (weak, nonatomic) IBOutlet UILabel *screenName;
@@ -26,7 +27,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UIButton *favoriteButton;
 @property (weak, nonatomic) IBOutlet UIButton *retweetButton;
 @property (weak, nonatomic) Tweet *tweet;
+@property (nonatomic) CGRect safeAreaLayoutFrame;
 
+//methods
 - (void)setTweet: (Tweet *)tweet;
 
 @end

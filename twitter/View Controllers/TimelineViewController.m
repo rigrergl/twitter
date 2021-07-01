@@ -40,6 +40,10 @@
     layout.estimatedItemSize = UICollectionViewFlowLayoutAutomaticSize;
 }
 
+- (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator{
+    [self.collectionView reloadData];
+}
+
 - (void)fetchTimeline {
     [[APIManager shared] getHomeTimelineWithCompletion:^(NSArray *tweets, NSError *error) {
         if (tweets) {
@@ -72,20 +76,8 @@
     TweetCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"TweetCell" forIndexPath:indexPath];
     
     Tweet *tweet = self.arrayOfTweets[indexPath.item];
+    cell.safeAreaLayoutFrame = self.view.safeAreaLayoutGuide.layoutFrame;
     [cell setTweet:tweet];
-    
-    CGRect screenRect = [[UIScreen mainScreen] bounds];
-    CGFloat screenWidth = screenRect.size.width;
-    NSLog(@"Screen Width: %f", screenWidth);
-    
-    [cell addConstraint:[NSLayoutConstraint constraintWithItem:cell.text
-          attribute:NSLayoutAttributeWidth
-          relatedBy:NSLayoutRelationEqual
-          toItem:nil
-          attribute:NSLayoutAttributeNotAnAttribute
-          multiplier:1.0
-          constant:screenWidth - 150]];
-    
 
     return cell;
 }
