@@ -177,12 +177,10 @@
     else if ([segue.identifier isEqualToString:@"profileSegue"]) {
         //Prepare segue to details view
         UserProfileViewController *userProfileViewController = [segue destinationViewController];
-        
         //getting the user to display
         User *user = sender;
         //initializing view controller
         userProfileViewController.user = user;
-        
     }
 }
 

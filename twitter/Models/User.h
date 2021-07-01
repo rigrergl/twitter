@@ -19,9 +19,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) NSString *location;
 @property (nonatomic, strong) NSString *userDescription;
 @property (nonatomic) BOOL verified;
-@property (nonatomic) NSInteger followersCount;
-@property (nonatomic) NSInteger followingCount;
-@property (nonatomic) NSInteger tweetsCount;
+@property (nonatomic) NSNumber *followersCount;
+@property (nonatomic) NSNumber *followingCount;
+@property (nonatomic) NSNumber *tweetsCount;
 
 
 //initializer with dictionary

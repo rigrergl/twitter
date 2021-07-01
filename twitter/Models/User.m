@@ -20,9 +20,9 @@
         self.location = dictionary[@"location"];
         self.userDescription = dictionary[@"description"];
         self.verified = [dictionary[@"verified"] boolValue];
-        self.followersCount = [dictionary[@"followers_count"] integerValue];
-        self.followingCount = [dictionary[@"friends_count"] integerValue];
-        self.tweetsCount = [dictionary[@"statuses_count"] integerValue];
+        self.followersCount = (NSNumber *)dictionary[@"followers_count"];
+        self.followingCount = (NSNumber *)dictionary[@"friends_count"];
+        self.tweetsCount = (NSNumber *)dictionary[@"statuses_count"];
     }
     return self;
 }
