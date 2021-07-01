@@ -11,6 +11,8 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@protocol TweetCellDelegate;
+
 //properties
 @interface TweetCell : UICollectionViewCell
 @property (weak, nonatomic) IBOutlet UILabel *name;
@@ -29,10 +31,16 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) Tweet *tweet;
 @property (nonatomic) CGRect safeAreaLayoutFrame;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *textWidthConstraint;
+@property (nonatomic, weak) id<TweetCellDelegate> delegate;
 
 //methods
-- (void)setTweet: (Tweet *)tweet;
+- (void)setTweet:(Tweet *)tweet;
+- (void)didTapUserProfile:(UITapGestureRecognizer *)sender;
 
+@end
+
+@protocol TweetCellDelegate
+- (void)tweetCell:(TweetCell *)tweetCell didTap:(User *)user;
 @end
 
 NS_ASSUME_NONNULL_END

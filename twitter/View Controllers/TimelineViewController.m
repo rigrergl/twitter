@@ -15,7 +15,7 @@
 #import "ComposeViewController.h"
 #import "TweetDetailsViewController.h"
 
-@interface TimelineViewController () <ComposeViewControllerDelegate, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UIScrollViewDelegate>
+@interface TimelineViewController () <ComposeViewControllerDelegate, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UIScrollViewDelegate, TweetCellDelegate>
 
 @property (nonatomic, strong) NSMutableArray *arrayOfTweets;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
@@ -82,12 +82,19 @@
     [self.collectionView reloadData];
 }
 
+
+- (void)tweetCell:(TweetCell *)tweetCell didTap:(User *)user{
+    //Perform segue to profile view controller
+    [self performSegueWithIdentifier:@"profileSegue" sender:user];
+}
+
 #pragma mark - Collection View Delegate Methods
 - (nonnull UICollectionViewCell *)collectionView:(nonnull UICollectionView *)collectionView cellForItemAtIndexPath:(nonnull NSIndexPath *)indexPath {
     TweetCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"TweetCell" forIndexPath:indexPath];
     
     Tweet *tweet = self.arrayOfTweets[indexPath.item];
     [cell setTweet:tweet];
+    cell.delegate = self;
     
     //setting cell label width
     CGFloat safeAreaWidth = self.view.safeAreaLayoutGuide.layoutFrame.size.width;

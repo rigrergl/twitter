@@ -269,11 +269,28 @@
                     </navigationItem>
                     <connections>
                         <outlet property="collectionView" destination="YdC-5h-rTh" id="5cg-nw-GB4"/>
+                        <segue destination="i9w-jp-9gU" kind="show" identifier="profileSegue" destinationCreationSelector="profileSegue" id="CYv-cT-FYb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oQh-hN-GQg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2599.1999999999998" y="36.431784107946029"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="JWc-Aq-c4T">
+            <objects>
+                <viewController id="i9w-jp-9gU" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="F0z-Hk-bhn">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="oPm-bX-9Xz"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="kP6-zh-YJf"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Dpz-sP-Kqm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3934" y="-188"/>
         </scene>
         <!--DetailsViewController-->
         <scene sceneID="6xD-CJ-u2N">
@@ -408,7 +425,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MDC-lA-O3b" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3439.1999999999998" y="25.637181409295355"/>
+            <point key="canvasLocation" x="3934" y="527"/>
         </scene>
         <!--Timeline-->
         <scene sceneID="WUT-Ke-VeR">

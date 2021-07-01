@@ -11,6 +11,14 @@
 
 @implementation TweetCell
 
+- (void)awakeFromNib{
+    [super awakeFromNib];
+    
+    UITapGestureRecognizer *profileTapGestureRecognizer = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(didTapUserProfile:)];
+    [self.profilePicture addGestureRecognizer:profileTapGestureRecognizer];
+    [self.profilePicture setUserInteractionEnabled:YES];
+}
+
 - (IBAction)didTapFavorite:(UIButton *)sender {
     if(!self.favorited) {
         //Update the local tweet model
@@ -91,7 +99,7 @@
     [self.retweetButton setSelected:self.retweeted];
 }
 
-- (void)setTweet: (Tweet *) tweet {
+- (void)setTweet:(Tweet *)tweet {
     _tweet = tweet;
     self.name.text = tweet.user.name;
 
@@ -123,6 +131,8 @@
     self.profilePicture.image = [UIImage imageWithData:urlData];
 }
 
-
+- (void) didTapUserProfile:(UITapGestureRecognizer *)sender{
+    [self.delegate tweetCell:self didTap:self.tweet.user];
+}
 
 @end
