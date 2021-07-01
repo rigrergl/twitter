@@ -53,13 +53,14 @@ Please list two areas of the assignment you'd like to **discuss further with you
 
 Here's a walkthrough of implemented user stories:
 
-<img src='http://i.imgur.com/link/to/your/gif/file.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='https://github.com/rigrergl/twitter/blob/master/main_demo.gif' width='300' alt='Video Walkthrough' />
+<img src='https://github.com/rigrergl/twitter/blob/master/collection_view_horizontal_demo.gif' width='' alt='Video Walkthrough' />
 
-GIF created with [Kap](https://getkap.co/).
+GIF created with [Ezgif](https://ezgif.com/maker).
 
 ## Notes
 
-Describe any challenges encountered while building the app.
+The biggest challenge I encountered was how to get a collection view to look like a table view.
 
 ## Credits
 
