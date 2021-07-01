@@ -121,18 +121,6 @@
     NSURL *url = [NSURL URLWithString:URLString];
     NSData *urlData = [NSData dataWithContentsOfURL:url];
     self.profilePicture.image = [UIImage imageWithData:urlData];
-    
-    //settting dynamic width constraint to label
-    CGRect screenRect = [[UIScreen mainScreen] bounds];
-    CGFloat screenWidth = screenRect.size.width;
-    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.text
-          attribute:NSLayoutAttributeWidth
-          relatedBy:NSLayoutRelationEqual
-          toItem:nil
-          attribute:NSLayoutAttributeNotAnAttribute
-          multiplier:1.0
-          constant:self.safeAreaLayoutFrame.size.width - 150]];
-    
 }
 
 

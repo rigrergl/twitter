@@ -72,13 +72,29 @@
     [[APIManager shared] logout];
 }
 
+- (void)didTweet:(nonnull Tweet *)tweet {
+    NSLog(@"didTweet called: %@", tweet);
+    [self.arrayOfTweets insertObject:tweet atIndex:0];
+    [self.collectionView reloadData];
+}
+
+#pragma mark - Collection View Delegate Methods
 - (nonnull __kindof UICollectionViewCell *)collectionView:(nonnull UICollectionView *)collectionView cellForItemAtIndexPath:(nonnull NSIndexPath *)indexPath {
     TweetCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"TweetCell" forIndexPath:indexPath];
     
     Tweet *tweet = self.arrayOfTweets[indexPath.item];
-    cell.safeAreaLayoutFrame = self.view.safeAreaLayoutGuide.layoutFrame;
     [cell setTweet:tweet];
-
+    
+    //setting cell label width
+    CGFloat safeAreaWidth = self.view.safeAreaLayoutGuide.layoutFrame.size.width;
+    CGFloat minWidth = 150;
+    if(safeAreaWidth > 400){
+        cell.textWidthConstraint.constant = [@(MAX(safeAreaWidth/2 - 150, minWidth)) doubleValue]; //making sure it's the min size
+    }
+    else {
+        cell.textWidthConstraint.constant = [@(MAX(safeAreaWidth - 150, minWidth)) doubleValue]; //making sure it's the min size
+    }
+    
     return cell;
 }
 
@@ -86,12 +102,13 @@
     return self.arrayOfTweets.count;
 }
 
-- (void)didTweet:(nonnull Tweet *)tweet {
-    NSLog(@"didTweet called: %@", tweet);
-    [self.arrayOfTweets insertObject:tweet atIndex:0];
-    [self.collectionView reloadData];
+- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section {
+    return 0;
 }
 
+- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section {
+    return 0;
+}
 
 #pragma mark - Navigation
 

@@ -28,6 +28,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UIButton *retweetButton;
 @property (weak, nonatomic) Tweet *tweet;
 @property (nonatomic) CGRect safeAreaLayoutFrame;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *textWidthConstraint;
 
 //methods
 - (void)setTweet: (Tweet *)tweet;
