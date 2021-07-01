@@ -16,7 +16,25 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+    self.nameLabel.text = self.user.name;
+    self.screenNameLabel.text = self.user.screenName;
+    self.descriptionLabel.text = self.user.userDescription;
+    
+    //setting profile image
+    NSString *URLString = self.user.profilePicture;
+    NSURL *url = [NSURL URLWithString:URLString];
+    NSData *urlData = [NSData dataWithContentsOfURL:url];
+    self.profileImage.image = [UIImage imageWithData:urlData];
+    
+    //setting banner image
+    URLString = self.user.bannerPicture;
+    url = [NSURL URLWithString:URLString];
+    urlData = [NSData dataWithContentsOfURL:url];
+    self.bannerImage.image = [UIImage imageWithData:urlData];
+    
+    //adding vefified logo if applicable
+    self.verifiedImage.hidden = !self.user.verified;
 }
 
 /*
