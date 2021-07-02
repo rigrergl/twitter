@@ -47,7 +47,7 @@
     // Construct what the new text would be if we allowed the user's latest edit
     NSString *newText = [self.textView.text stringByReplacingCharactersInRange:range withString:text];
     
-    if(newText.length < characterLimit) { // Should the new text should be allowed? True/False
+    if(newText.length <= characterLimit) { // Should the new text should be allowed? True/False
         //Update character count label
         NSString *numChars = [NSString stringWithFormat:@"%d", newText.length ];
         self.characterCountLabel.text = [numChars stringByAppendingString:@"/140"];
