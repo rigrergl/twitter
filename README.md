@@ -52,9 +52,11 @@ Please list two areas of the assignment you'd like to **discuss further with you
 
 Here's a walkthrough of implemented user stories:
 
+<img src='https://github.com/rigrergl/twitter/blob/master/launch_screen_and_login.gif' width='300' alt='Video Walkthrough' />
 <img src='https://github.com/rigrergl/twitter/blob/master/main_demo.gif' width='300' alt='Video Walkthrough' />
 <img src='https://github.com/rigrergl/twitter/blob/master/collection_view_horizontal_demo.gif' width='' alt='Video Walkthrough' />
 <img src='https://github.com/rigrergl/twitter/blob/master/character_count_demo.gif' width='300' alt='Video Walkthrough' />
+
 
 GIF created with [Ezgif](https://ezgif.com/maker).
 
